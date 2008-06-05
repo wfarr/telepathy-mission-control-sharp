@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <gapi-parser-input>
   <api filename="missioncontrol-sharp-api.raw">
-    <library name="monoskel-1.0">
-      <namespace name="MonoSkel">
-        <dir>/use/include/monoskel</dir>
+    <library name="missioncontrol">
+      <namespace name="MissionControl">
+        <dir>/usr/include/mission-control</dir>
       </namespace>
     </library>
   </api>
