@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <gapi-parser-input>
-  <api filename="missioncontrol-sharp-api.raw">
-    <library name="missioncontrol">
-      <namespace name="MissionControl">
-        <dir>/usr/include/mission-control</dir>
+  <api filename="telepathy-mission-control-api-4.67.raw">
+    <library name="telepathy-mission-control-1.0.0.dll">
+      <namespace name="MC">
+        <dir>telepathy-mission-control-4.67/src</dir>
+        <dir>telepathy-mission-control-4.67/libmissioncontrol</dir>
+        <dir>telepathy-mission-control-4.67/server</dir>
+        <dir>telepathy-mission-control-4.67/libmcclient</dir>
       </namespace>
     </library>
   </api>
