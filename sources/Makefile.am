@@ -1,58 +1,39 @@
+CSC=$(MCS)
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = $(ASSEMBLY_NAME).pc
-
-RAW_API=$(ASSEMBLY_NAME)-api.raw
-API=$(ASSEMBLY_NAME)-api.xml
+RAW_API=$(ASSEMBLY_NAME)-api-0.7.10.raw
+API=$(ASSEMBLY_NAME)-api-0.7.10.xml
 METADATA=$(ASSEMBLY_NAME).metadata
+ASSEMBLY=$(ASSEMBLY_NAME).dll
 
-sources = 
-#sources = Class.cs
+build_sources = AssemblyInfo.cs
 
-build_sources = AssemblyInfo.cs $(sources)
+EXTRA_DIST =   \
+	telepathy-mission-control-4.67-sources.xml
 
-customs = 
-#customs = App.custom Widget.custom Project.custom WidgetClass.custom
+CLEANFILES=$(ASSEMBLY) generated-stamp $(API)
 
-CLEANFILES = $(ASSEMBLY_NAME).dll generated-stamp generated/*.cs $(API)
+TELEPATHY_MISSION_CONTROL_4_67_DOWNLOAD = \
+	http://voxel.dl.sourceforge.net/sourceforge/mission-control/telepathy-mission-control-4.67.tar.gz
 
-DISTCLEANFILES= AssemblyInfo.cs $(ASSEMBLY_NAME).pc $(ASSEMBLY_NAME).dll.config
+all: $(ASSEMBLY)
 
-noinst_DATA = $(ASSEMBLY_NAME).dll
+api: get-source-code
+	$(GAPIPAR) telepathy-mission-control-4.67-sources.xml
 
-EXTRA_DIST = $(RAW_API) $(sources) $(customs) $(METADATA) \
-	AssemblyInfo.cs.in \
-	$(ASSEMBLY_NAME).snk \
-	$(ASSEMBLY_NAME).dll.config.in \
-	$(ASSEMBLY_NAME).pc.in \
-	$(ASSEMBLY_NAME)-sources.xml
-
-all: generated-stamp $(ASSEMBLY)
-
-api:
-	PERLLIB=$(GTKSHARP_PREFIX)/share/perl5 \
-	PATH=$(GTKSHARP_PREFIX)/bin:$$PATH \
-	$(GAPI_PARSER) $(ASSEMBLY_NAME)-sources.xml
-
-$(API): $(srcdir)/$(RAW_API) $(srcdir)/$(METADATA)
-	cp $(srcdir)/$(RAW_API) $(API)
+$(API): $(RAW_API) $(METADATA)
+	cp $(RAW_API) $(API)
 	chmod u+w $(API)
-	$(GAPI_FIXUP) --api=$(srcdir)/$(API) --metadata=$(srcdir)/$(METADATA)
+	$(GAPIFIX) --api=$(API) --metadata=$(METADATA)
+
+get-source-code:
+	curl -G $(TELEPATHY_MISSION_CONTROL_4_67_DOWNLOAD) | tar zx
 
 generated-stamp: $(API)
-	 $(GAPI_CODEGEN) --generate $(srcdir)/$(API) $(GTK_SHARP_CFLAGS) \
-	 	--outdir=generated --customdir=$(srcdir) \
-	 	--assembly-name=$(ASSEMBLY_NAME) && touch generated-stamp
+	rm -rf generated &&	\
+	$(GAPIGEN) --generate $(API) \
+	--outdir=generated --customdir=../sources \
+	--assembly-name=$(ASSEMBLY_NAME) && touch generated-stamp
 
-$(ASSEMBLY_NAME).dll: $(build_sources) generated-stamp
-	$(CSC) -nowarn:169 -unsafe -target:library $(GTK_SHARP_LIBS) \
-		$(build_sources) generated/*.cs -out:$(ASSEMBLY_NAME).dll
-
-install-data-local:
-	echo "$(GACUTIL) /i $(ASSEMBLY_NAME).dll /f $(GACUTIL_FLAGS)";  \
-        $(GACUTIL) /i $(ASSEMBLY_NAME).dll /f $(GACUTIL_FLAGS) || exit 1;
-
-uninstall-local:
-	echo "$(GACUTIL) /u $(ASSEMBLY_NAME) $(GACUTIL_FLAGS)"; \
-        $(GACUTIL) /u $(ASSEMBLY_NAME) $(GACUTIL_FLAGS) || exit 1;
-
+$(ASSEMBLY): $(build_sources) generated-stamp
+	$(CSC) -pkg:glib-sharp-2.0 -nowarn:169 -unsafe -target:library \
+	$(build_sources) generated/*.cs -out:$(ASSEMBLY)
