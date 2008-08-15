@@ -8,7 +8,7 @@ ASSEMBLY=$(ASSEMBLY_NAME).dll
 build_sources = AssemblyInfo.cs
 
 EXTRA_DIST =   \
-	telepathy-mission-control-4.67-sources.xml
+	telepathy-mission-control-sharp-4.67-sources.xml
 
 CLEANFILES=$(ASSEMBLY) generated-stamp $(API)
 
