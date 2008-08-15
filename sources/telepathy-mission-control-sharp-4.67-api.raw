@@ -1,0 +1,1918 @@
+<?xml version="1.0"?>
+<api>
+  <!--
+
+        This file was automatically generated.
+        Please DO NOT MODIFY THIS FILE, modify .metadata files instead.
+
+-->
+  <namespace name="MC" library="telepathy-mission-control-1.0.0.dll">
+    <enum name="Error" cname="MCError" type="enum">
+      <member cname="MC_DISCONNECTED_ERROR" name="DisconnectedError" />
+      <member cname="MC_INVALID_HANDLE_ERROR" name="InvalidHandleError" />
+      <member cname="MC_NO_MATCHING_CONNECTION_ERROR" name="NoMatchingConnectionError" />
+      <member cname="MC_INVALID_ACCOUNT_ERROR" name="InvalidAccountError" />
+      <member cname="MC_PRESENCE_FAILURE_ERROR" name="PresenceFailureError" />
+      <member cname="MC_NO_ACCOUNTS_ERROR" name="NoAccountsError" />
+      <member cname="MC_NETWORK_ERROR" name="NetworkError" />
+      <member cname="MC_CONTACT_DOES_NOT_SUPPORT_VOICE_ERROR" name="ContactDoesNotSupportVoiceError" />
+      <member cname="MC_LOWMEM_ERROR" name="LowmemError" />
+      <member cname="MC_CHANNEL_REQUEST_GENERIC_ERROR" name="ChannelRequestGenericError" />
+      <member cname="MC_CHANNEL_BANNED_ERROR" name="ChannelBannedError" />
+      <member cname="MC_CHANNEL_FULL_ERROR" name="ChannelFullError" />
+      <member cname="MC_CHANNEL_INVITE_ONLY_ERROR" name="ChannelInviteOnlyError" />
+      <member cname="MC_LAST_ERROR" name="LastError" />
+    </enum>
+    <enum name="McAccountSettingState" cname="McAccountSettingState" type="enum">
+      <member cname="MC_ACCOUNT_SETTING_ABSENT" name="Absent" />
+      <member cname="MC_ACCOUNT_SETTING_FROM_ACCOUNT" name="FromAccount" />
+      <member cname="MC_ACCOUNT_SETTING_FROM_PROFILE" name="FromProfile" />
+      <member cname="MC_ACCOUNT_SETTING_FROM_PROXY" name="FromProxy" />
+    </enum>
+    <enum name="McFilterFlag" cname="McFilterFlag" gtype="mc_filter_flag_get_type" type="flags">
+      <member cname="MC_FILTER_FLAG_INCOMING" name="Incoming" value="1 &lt;&lt; 0" />
+      <member cname="MC_FILTER_FLAG_OUTGOING" name="Outgoing" value="1 &lt;&lt; 1" />
+    </enum>
+    <enum name="McFilterPriority" cname="McFilterPriority" gtype="mc_filter_priority_get_type" type="enum">
+      <member cname="MC_FILTER_PRIORITY_CRITICAL" name="Critical" />
+      <member cname="MC_FILTER_PRIORITY_SYSTEM" name="System" value="1000" />
+      <member cname="MC_FILTER_PRIORITY_NOTICE" name="Notice" value="2000" />
+      <member cname="MC_FILTER_PRIORITY_DIALOG" name="Dialog" value="3000" />
+      <member cname="MC_FILTER_PRIORITY_MONITOR" name="Monitor" value="4000" />
+    </enum>
+    <enum name="McPresence" cname="McPresence" gtype="mc_presence_get_type" type="enum">
+      <member cname="MC_PRESENCE_UNSET" name="PresenceUnset" />
+      <member cname="MC_PRESENCE_OFFLINE" name="PresenceOffline" />
+      <member cname="MC_PRESENCE_AVAILABLE" name="PresenceAvailable" />
+      <member cname="MC_PRESENCE_AWAY" name="PresenceAway" />
+      <member cname="MC_PRESENCE_EXTENDED_AWAY" name="PresenceExtendedAway" />
+      <member cname="MC_PRESENCE_HIDDEN" name="PresenceHidden" />
+      <member cname="MC_PRESENCE_DO_NOT_DISTURB" name="PresenceDoNotDisturb" />
+      <member cname="MC_PRESENCE" name="Presence" />
+    </enum>
+    <enum name="McProfileCapabilityFlags" cname="McProfileCapabilityFlags" type="flags">
+      <member cname="MC_PROFILE_CAPABILITY_NONE" name="None" />
+      <member cname="MC_PROFILE_CAPABILITY_CHAT_P2P" name="ChatP2p" value="1 &lt;&lt; 0" />
+      <member cname="MC_PROFILE_CAPABILITY_CHAT_ROOM" name="ChatRoom" value="1 &lt;&lt; 1" />
+      <member cname="MC_PROFILE_CAPABILITY_CHAT_ROOM_LIST" name="ChatRoomList" value="1 &lt;&lt; 2" />
+      <member cname="MC_PROFILE_CAPABILITY_VOICE_P2P" name="VoiceP2p" value="1 &lt;&lt; 3" />
+      <member cname="MC_PROFILE_CAPABILITY_CONTACT_SEARCH" name="ContactSearch" value="1 &lt;&lt; 4" />
+      <member cname="MC_PROFILE_CAPABILITY_SPLIT_ACCOUNT" name="SplitAccount" value="1 &lt;&lt; 5" />
+      <member cname="MC_PROFILE_CAPABILITY_REGISTRATION_UI" name="RegistrationUi" value="1 &lt;&lt; 6" />
+      <member cname="MC_PROFILE_CAPABILITY_SUPPORTS_AVATARS" name="SupportsAvatars" value="1 &lt;&lt; 7" />
+      <member cname="MC_PROFILE_CAPABILITY_SUPPORTS_ALIAS" name="SupportsAlias" value="1 &lt;&lt; 8" />
+      <member cname="MC_PROFILE_CAPABILITY_SUPPORTS_ROSTER" name="SupportsRoster" value="1 &lt;&lt; 9" />
+      <member cname="MC_PROFILE_CAPABILITY_VIDEO_P2P" name="VideoP2p" value="1 &lt;&lt; 10" />
+    </enum>
+    <enum name="McStatus" cname="McStatus" gtype="mc_status_get_type" type="enum">
+      <member cname="MC_STATUS_DISCONNECTED" name="Disconnected" />
+      <member cname="MC_STATUS_CONNECTING" name="Connecting" />
+      <member cname="MC_STATUS_CONNECTED" name="Connected" />
+    </enum>
+    <enum name="McdChannelStatus" cname="McdChannelStatus" gtype="mcd_channel_status_get_type" type="enum">
+      <member cname="MCD_CHANNEL_PENDING" name="Pending" />
+      <member cname="MCD_CHANNEL_DISPATCHING" name="Dispatching" />
+      <member cname="MCD_CHANNEL_DISPATCHED" name="Dispatched" />
+      <member cname="MCD_CHANNEL_FAILED" name="Failed" />
+    </enum>
+    <enum name="McdMode" cname="McdMode" gtype="mcd_mode_get_type" type="enum">
+      <member cname="MCD_MODE_UNKNOWN" name="Unknown" />
+      <member cname="MCD_MODE_NORMAL" name="Normal" />
+      <member cname="MCD_MODE_RESTRICTED" name="Restricted" />
+      <member cname="MCD_MODE_CALL" name="Call" />
+    </enum>
+    <enum name="McdProvisioningError" cname="McdProvisioningError" gtype="mcd_provisioning_error_get_type" type="enum">
+      <member cname="MCD_PROVISIONING_ERROR_NOT_FOUND" name="NotFound" />
+      <member cname="MCD_PROVISIONING_ERROR_NO_RESPONSE" name="NoResponse" />
+      <member cname="MCD_PROVISIONING_ERROR_BAD_RESULT" name="BadResult" />
+    </enum>
+    <enum name="McdSystemFlags" cname="McdSystemFlags" gtype="mcd_system_flags_get_type" type="flags">
+      <member cname="MCD_SYSTEM_CONNECTED" name="Connected" value="1" />
+      <member cname="MCD_SYSTEM_MEMORY_CONSERVED" name="MemoryConserved" value="1 &lt;&lt; 1" />
+      <member cname="MCD_SYSTEM_POWER_CONSERVED" name="PowerConserved" value="1 &lt;&lt; 2" />
+      <member cname="MCD_SYSTEM_SCREEN_BLANKED" name="ScreenBlanked" value="1 &lt;&lt; 3" />
+      <member cname="MCD_SYSTEM_LOCKED" name="Locked" value="1 &lt;&lt; 4" />
+      <member cname="MCD_SYSTEM_IDLE" name="Idle" value="1 &lt;&lt; 5" />
+    </enum>
+    <callback name="McAccountFilter" cname="McAccountFilter">
+      <return-type type="gboolean" />
+      <parameters>
+        <parameter type="McAccount*" name="account" />
+        <parameter type="gpointer" name="data" />
+      </parameters>
+    </callback>
+    <callback name="McCallback" cname="McCallback">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="MissionControl*" name="mc" />
+        <parameter type="GError*" name="error" />
+        <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <callback name="McGetCurrentStatusCallback" cname="McGetCurrentStatusCallback">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="MissionControl*" name="mc" />
+        <parameter type="McStatus" name="status" />
+        <parameter type="McPresence" name="presence" />
+        <parameter type="McPresence" name="requested_presence" />
+        <parameter type="McAccountStatus*" name="accounts" />
+        <parameter type="gsize" name="n_accounts" />
+        <parameter type="GError*" name="error" />
+        <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <callback name="McdFilterFunc" cname="McdFilterFunc">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="McdDispatcherContext*" name="ctx" />
+        <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <callback name="McdProvisioningCallback" cname="McdProvisioningCallback">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="McdProvisioning*" name="prov" />
+        <parameter type="GHashTable*" name="parameters" />
+        <parameter type="GError*" name="error" />
+        <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <interface name="McdProvisioning" cname="McdProvisioning">
+      <virtual_method name="RequestParameters" cname="request_parameters">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdProvisioning*" name="prov" />
+          <parameter type="const-gchar*" name="url" />
+          <parameter type="const-gchar*" name="username" />
+          <parameter type="const-gchar*" name="password" />
+          <parameter type="McdProvisioningCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="CancelRequest" cname="cancel_request">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdProvisioning*" name="prov" />
+          <parameter type="McdProvisioningCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </virtual_method>
+      <method name="CancelRequest" cname="mcd_provisioning_cancel_request">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdProvisioningCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="ErrorQuark" cname="mcd_provisioning_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+      <method name="GetType" cname="mcd_provisioning_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="RequestParameters" cname="mcd_provisioning_request_parameters">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="const-gchar*" name="url" />
+          <parameter type="const-gchar*" name="username" />
+          <parameter type="const-gchar*" name="password" />
+          <parameter type="McdProvisioningCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+    </interface>
+    <object name="McdAccount" cname="McdAccount" parent="GObject">
+      <field name="Priv" cname="priv" type="McdAccountPrivate*" />
+      <implements>
+        <interface cname="McSvcAccount" />
+      </implements>
+      <method name="GetType" cname="mcd_account_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_account_new">
+        <parameters>
+          <parameter type="GKeyFile*" name="keyfile" />
+          <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </constructor>
+    </object>
+    <object name="McdAccountManager" cname="McdAccountManager" parent="GObject">
+      <field name="Priv" cname="priv" type="McdAccountManagerPrivate*" />
+      <property name="DbusDaemon" cname="dbus-daemon" type="TpDbusDaemon" readable="true" writeable="true" construct-only="true" />
+      <implements>
+        <interface cname="McSvcAccountManager" />
+      </implements>
+      <method name="GetType" cname="mcd_account_manager_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_account_manager_new">
+        <parameters>
+          <parameter type="TpDBusDaemon*" name="dbus_daemon" />
+        </parameters>
+      </constructor>
+    </object>
+    <object name="McdChannel" cname="McdChannel" parent="McdMission">
+      <field name="Priv" cname="priv" type="McdChannelPrivate*" />
+      <signal name="StatusChanged" cname="status-changed" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdChannel*" name="channel" />
+          <parameter type="McdChannelStatus" name="status" />
+        </parameters>
+      </signal>
+      <signal name="MembersAccepted" cname="members-accepted" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdChannel*" name="channel" />
+        </parameters>
+      </signal>
+      <property name="Connection" cname="connection" type="GObject" readable="true" writeable="true" construct-only="true" />
+      <property name="TpChannel" cname="tp-channel" type="McdChannelPending" readable="true" writeable="true" />
+      <property name="ChannelType" cname="channel-type" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="RequestorSerial" cname="requestor-serial" type="guint" readable="true" writeable="true" />
+      <property name="RequestorClientId" cname="requestor-client-id" type="gchar*" readable="true" writeable="true" />
+      <property name="SelfHandleReady" cname="self-handle-ready" type="gboolean" readable="true" />
+      <property name="NameReady" cname="name-ready" type="gboolean" readable="true" />
+      <property name="InviterReady" cname="inviter-ready" type="gboolean" readable="true" />
+      <method name="GetChannelType" cname="mcd_channel_get_channel_type">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetChannelTypeQuark" cname="mcd_channel_get_channel_type_quark">
+        <return-type type="GQuark" />
+      </method>
+      <method name="GetFlags" cname="mcd_channel_get_flags">
+        <return-type type="gint" />
+      </method>
+      <method name="GetHandle" cname="mcd_channel_get_handle">
+        <return-type type="guint" />
+      </method>
+      <method name="GetHandleType" cname="mcd_channel_get_handle_type">
+        <return-type type="TpHandleType" />
+      </method>
+      <method name="GetInviter" cname="mcd_channel_get_inviter">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetMembers" cname="mcd_channel_get_members">
+        <return-type type="GPtrArray*" />
+      </method>
+      <method name="GetMembersAccepted" cname="mcd_channel_get_members_accepted">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetName" cname="mcd_channel_get_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetObjectPath" cname="mcd_channel_get_object_path">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetSelfHandle" cname="mcd_channel_get_self_handle">
+        <return-type type="guint" />
+      </method>
+      <method name="GetStatus" cname="mcd_channel_get_status">
+        <return-type type="McdChannelStatus" />
+      </method>
+      <method name="GetType" cname="mcd_channel_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="IsMissed" cname="mcd_channel_is_missed">
+        <return-type type="gboolean" />
+      </method>
+      <method name="Leave" cname="mcd_channel_leave">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="message" />
+          <parameter type="TpChannelGroupChangeReason" name="reason" />
+        </parameters>
+      </method>
+      <constructor cname="mcd_channel_new">
+        <parameters>
+          <parameter type="TpChannel*" name="channel" />
+          <parameter type="const-gchar*" name="channel_type" />
+          <parameter type="guint" name="channel_handle" />
+          <parameter type="TpHandleType" name="channel_handle_type" />
+          <parameter type="gboolean" name="outgoing" />
+          <parameter type="guint" name="requestor_serial" />
+          <parameter type="const-gchar*" name="requestor_client_id" />
+        </parameters>
+      </constructor>
+      <method name="SetStatus" cname="mcd_channel_set_status">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdChannelStatus" name="status" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdConnection" cname="McdConnection" parent="McdOperation">
+      <field name="Priv" cname="priv" type="McdConnectionPrivate*" />
+      <property name="PresenceFrame" cname="presence-frame" type="McdPresenceFrame" readable="true" writeable="true" construct-only="true" />
+      <property name="Dispatcher" cname="dispatcher" type="McdDispatcher" readable="true" writeable="true" construct-only="true" />
+      <property name="DbusDaemon" cname="dbus-daemon" type="TpDbusDaemon" readable="true" writeable="true" construct-only="true" />
+      <property name="BusName" cname="bus-name" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="TpManager" cname="tp-manager" type="TpConnectionManager" readable="true" writeable="true" construct-only="true" />
+      <property name="TpConnection" cname="tp-connection" type="TpConnection" readable="true" />
+      <property name="Account" cname="account" type="McAccount" readable="true" writeable="true" construct-only="true" />
+      <method name="AccountChanged" cname="mcd_connection_account_changed">
+        <return-type type="void" />
+      </method>
+      <method name="CancelChannelRequest" cname="mcd_connection_cancel_channel_request">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="guint" name="operation_id" />
+          <parameter type="const-gchar*" name="requestor_client_id" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="Close" cname="mcd_connection_close">
+        <return-type type="void" />
+      </method>
+      <method name="Connect" cname="mcd_connection_connect">
+        <return-type type="void" />
+      </method>
+      <method name="GetAccount" cname="mcd_connection_get_account">
+        <return-type type="McAccount*" />
+      </method>
+      <method name="GetConnectionStatus" cname="mcd_connection_get_connection_status">
+        <return-type type="TpConnectionStatus" />
+      </method>
+      <method name="GetTelepathyDetails" cname="mcd_connection_get_telepathy_details">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="gchar**" name="ret_servname" />
+          <parameter type="gchar**" name="ret_objpath" />
+        </parameters>
+      </method>
+      <method name="GetType" cname="mcd_connection_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_connection_new">
+        <parameters>
+          <parameter type="TpDBusDaemon*" name="dbus_daemon" />
+          <parameter type="const-gchar*" name="bus_name" />
+          <parameter type="TpConnectionManager*" name="tp_conn_mgr" />
+          <parameter type="McAccount*" name="account" />
+          <parameter type="McdPresenceFrame*" name="presence_frame" />
+          <parameter type="McdDispatcher*" name="dispatcher" />
+        </parameters>
+      </constructor>
+      <method name="RemoteAvatarChanged" cname="mcd_connection_remote_avatar_changed">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="guint" name="contact_id" />
+          <parameter type="const-gchar*" name="token" />
+        </parameters>
+      </method>
+      <method name="RequestChannel" cname="mcd_connection_request_channel">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="mcd_channel_request*" name="req" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="Restart" cname="mcd_connection_restart">
+        <return-type type="void" />
+      </method>
+    </object>
+    <object name="McdController" cname="McdController" parent="McdOperation">
+      <method name="CancelShutdown" cname="mcd_controller_cancel_shutdown">
+        <return-type type="void" />
+      </method>
+      <method name="GetType" cname="mcd_controller_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_controller_new" />
+      <method name="Shutdown" cname="mcd_controller_shutdown">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="const-gchar*" name="reason" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdDispatcher" cname="McdDispatcher" parent="McdMission">
+      <signal name="ChannelAdded" cname="channel_added" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdDispatcher*" name="dispatcher" />
+          <parameter type="McdChannel*" name="channel" />
+        </parameters>
+      </signal>
+      <signal name="ChannelRemoved" cname="channel_removed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdDispatcher*" name="dispatcher" />
+          <parameter type="McdChannel*" name="channel" />
+        </parameters>
+      </signal>
+      <signal name="Dispatched" cname="dispatched" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdDispatcher*" name="dispatcher" />
+          <parameter type="McdChannel*" name="channel" />
+        </parameters>
+      </signal>
+      <signal name="DispatchFailed" cname="dispatch-failed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdDispatcher*" name="dispatcher" />
+          <parameter type="McdChannel*" name="channel" />
+          <parameter type="GError*" name="error" />
+        </parameters>
+      </signal>
+      <property name="PluginDir" cname="plugin-dir" type="gchar*" readable="true" writeable="true" construct="true" />
+      <property name="DbusDaemon" cname="dbus-daemon" type="TpDbusDaemon" readable="true" writeable="true" construct="true" />
+      <property name="McdMaster" cname="mcd-master" type="McdMaster" readable="true" writeable="true" construct="true" />
+      <virtual_method name="Send" cname="send">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdDispatcher*" name="dispatcher" />
+          <parameter type="McdChannel*" name="channel" />
+        </parameters>
+      </virtual_method>
+      <method name="GetChannelCapabilities" cname="mcd_dispatcher_get_channel_capabilities">
+        <return-type type="GPtrArray*" />
+        <parameters>
+          <parameter type="const-gchar*" name="protocol" />
+        </parameters>
+      </method>
+      <method name="GetChannelTypeUsage" cname="mcd_dispatcher_get_channel_type_usage">
+        <return-type type="gint" />
+        <parameters>
+          <parameter type="GQuark" name="chan_type_quark" />
+        </parameters>
+      </method>
+      <method name="GetStatus" cname="mcd_dispatcher_get_status">
+        <return-type type="McdDispatcherStatus" />
+        <parameters>
+          <parameter type="McdChannel*" name="channel" />
+        </parameters>
+      </method>
+      <method name="GetType" cname="mcd_dispatcher_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_dispatcher_new">
+        <parameters>
+          <parameter type="TpDBusDaemon*" name="dbus_daemon" />
+          <parameter type="McdMaster*" name="master" />
+        </parameters>
+      </constructor>
+      <method name="RegisterFilter" cname="mcd_dispatcher_register_filter">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdFilterFunc" name="filter" />
+          <parameter type="GQuark" name="channel_type_quark" />
+          <parameter type="guint" name="filter_flags" />
+          <parameter type="guint" name="priority" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="RegisterFilters" cname="mcd_dispatcher_register_filters">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdFilter*" name="filters" />
+          <parameter type="GQuark" name="channel_type_quark" />
+          <parameter type="guint" name="filter_flags" />
+        </parameters>
+      </method>
+      <method name="Send" cname="mcd_dispatcher_send">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McdChannel*" name="channel" />
+        </parameters>
+      </method>
+      <method name="UnregisterFilter" cname="mcd_dispatcher_unregister_filter">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdFilterFunc" name="filter" />
+          <parameter type="GQuark" name="channel_type_quark" />
+          <parameter type="guint" name="filter_flags" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdManager" cname="McdManager" parent="McdOperation">
+      <signal name="AccountAdded" cname="account-added" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdManager*" name="manager" />
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </signal>
+      <signal name="AccountRemoved" cname="account-removed" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdManager*" name="manager" />
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </signal>
+      <property name="PresenceFrame" cname="presence-frame" type="McdPresenceFrame" readable="true" writeable="true" construct-only="true" />
+      <property name="Dispatcher" cname="dispatcher" type="McdDispatcher" readable="true" writeable="true" construct-only="true" />
+      <property name="McManager" cname="mc-manager" type="McManager" readable="true" writeable="true" construct-only="true" />
+      <property name="DbusDaemon" cname="dbus-daemon" type="TpDbusDaemon" readable="true" writeable="true" construct="true" />
+      <property name="Accounts" cname="accounts" type="gpointer" readable="true" />
+      <method name="AddAccount" cname="mcd_manager_add_account">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="CanHandleAccount" cname="mcd_manager_can_handle_account">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="CancelChannelRequest" cname="mcd_manager_cancel_channel_request">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="guint" name="operation_id" />
+          <parameter type="const-gchar*" name="requestor_client_pid" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetAccountByName" cname="mcd_manager_get_account_by_name">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="const-gchar*" name="account_name" />
+        </parameters>
+      </method>
+      <method name="GetAccountConnection" cname="mcd_manager_get_account_connection">
+        <return-type type="McdConnection*" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="GetAccounts" cname="mcd_manager_get_accounts">
+        <return-type type="const-GList*" />
+      </method>
+      <method name="GetConnection" cname="mcd_manager_get_connection">
+        <return-type type="McdConnection*" />
+        <parameters>
+          <parameter type="const-gchar*" name="object_path" />
+        </parameters>
+      </method>
+      <method name="GetType" cname="mcd_manager_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_manager_new">
+        <parameters>
+          <parameter type="McManager*" name="mc_manager" />
+          <parameter type="McdPresenceFrame*" name="pframe" />
+          <parameter type="McdDispatcher*" name="dispatcher" />
+          <parameter type="TpDBusDaemon*" name="dbus_daemon" />
+        </parameters>
+      </constructor>
+      <method name="ReconnectAccount" cname="mcd_manager_reconnect_account">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="RemoveAccount" cname="mcd_manager_remove_account">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="RequestChannel" cname="mcd_manager_request_channel">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="mcd_channel_request*" name="req" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdMaster" cname="McdMaster" parent="McdController">
+      <property name="PresenceFrame" cname="presence-frame" type="McdPresenceFrame" readable="true" />
+      <property name="Dispatcher" cname="dispatcher" type="McdDispatcher" readable="true" />
+      <property name="DbusConnection" cname="dbus-connection" type="gpointer" readable="true" />
+      <property name="DefaultPresence" cname="default-presence" type="guint" readable="true" writeable="true" />
+      <method name="AddConnectionParameter" cname="mcd_master_add_connection_parameter">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="const-GValue*" name="value" />
+        </parameters>
+      </method>
+      <method name="CancelChannelRequest" cname="mcd_master_cancel_channel_request">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="guint" name="operation_id" />
+          <parameter type="const-gchar*" name="requestor_client_id" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="CancelLastPresenceRequest" cname="mcd_master_cancel_last_presence_request">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetAccountConnectionDetails" cname="mcd_master_get_account_connection_details">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="account_name" />
+          <parameter type="gchar**" name="servname" />
+          <parameter type="gchar**" name="objpath" />
+        </parameters>
+      </method>
+      <method name="GetAccountForConnection" cname="mcd_master_get_account_for_connection">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="object_path" />
+          <parameter type="gchar**" name="ret_unique_name" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetAccountStatus" cname="mcd_master_get_account_status">
+        <return-type type="TpConnectionStatus" />
+        <parameters>
+          <parameter type="gchar*" name="account_name" />
+        </parameters>
+      </method>
+      <method name="GetActualPresence" cname="mcd_master_get_actual_presence">
+        <return-type type="McPresence" />
+      </method>
+      <method name="GetActualPresenceMessage" cname="mcd_master_get_actual_presence_message">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetConnection" cname="mcd_master_get_connection">
+        <return-type type="McdConnection*" />
+        <parameters>
+          <parameter type="const-gchar*" name="object_path" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetConnectionParameters" cname="mcd_master_get_connection_parameters">
+        <return-type type="GHashTable*" />
+      </method>
+      <method name="GetOnlineConnectionNames" cname="mcd_master_get_online_connection_names">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="gchar***" name="connected_names" />
+        </parameters>
+      </method>
+      <method name="GetRequestedPresence" cname="mcd_master_get_requested_presence">
+        <return-type type="McPresence" />
+      </method>
+      <method name="GetRequestedPresenceMessage" cname="mcd_master_get_requested_presence_message">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetType" cname="mcd_master_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="GetUsedChannelsCount" cname="mcd_master_get_used_channels_count">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="guint" name="chan_type" />
+          <parameter type="guint*" name="ret" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <constructor cname="mcd_master_new" />
+      <method name="RequestChannel" cname="mcd_master_request_channel">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="mcd_channel_request*" name="req" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="RequestPresence" cname="mcd_master_request_presence">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McPresence" name="presence" />
+          <parameter type="const-gchar*" name="presence_message" />
+        </parameters>
+      </method>
+      <method name="SetDefaultPresence" cname="mcd_master_set_default_presence">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="client_id" />
+        </parameters>
+      </method>
+      <method name="SetDefaultPresenceSetting" cname="mcd_master_set_default_presence_setting">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McPresence" name="presence" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdMission" cname="McdMission" parent="GObject">
+      <signal name="Abort" cname="abort" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </signal>
+      <signal name="Connected" cname="connected" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </signal>
+      <signal name="Disconnected" cname="disconnected" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </signal>
+      <signal name="FlagsChanged" cname="flags-changed" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+          <parameter type="McdSystemFlags" name="flags" />
+        </parameters>
+      </signal>
+      <signal name="ModeSet" cname="mode-set" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+          <parameter type="McdMode" name="mode" />
+        </parameters>
+      </signal>
+      <signal name="ParentSet" cname="parent-set" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+          <parameter type="McdMission*" name="parent" />
+        </parameters>
+      </signal>
+      <property name="Parent" cname="parent" type="McdMission" readable="true" writeable="true" />
+      <property name="Mode" cname="mode" type="McdMode" readable="true" writeable="true" />
+      <property name="SystemFlags" cname="system-flags" type="McdMode" readable="true" writeable="true" />
+      <virtual_method name="SetParent" cname="set_parent">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+          <parameter type="McdMission*" name="parent" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="Connect" cname="connect">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="Disconnect" cname="disconnect">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="SetFlags" cname="set_flags">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+          <parameter type="McdSystemFlags" name="flags" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetFlags" cname="get_flags">
+        <return-type type="McdSystemFlags" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="SetMode" cname="set_mode">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+          <parameter type="McdMode" name="mode" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetMode" cname="get_mode">
+        <return-type type="McdMode" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="Abort" cname="abort">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </virtual_method>
+      <method name="Abort" cname="mcd_mission_abort">
+        <return-type type="void" />
+      </method>
+      <method name="Connect" cname="mcd_mission_connect">
+        <return-type type="void" />
+      </method>
+      <method name="Disconnect" cname="mcd_mission_disconnect">
+        <return-type type="void" />
+      </method>
+      <method name="GetFlags" cname="mcd_mission_get_flags">
+        <return-type type="McdSystemFlags" />
+      </method>
+      <method name="GetMode" cname="mcd_mission_get_mode">
+        <return-type type="McdMode" />
+      </method>
+      <method name="GetParent" cname="mcd_mission_get_parent">
+        <return-type type="McdMission*" />
+      </method>
+      <method name="GetType" cname="mcd_mission_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="IsConnected" cname="mcd_mission_is_connected">
+        <return-type type="gboolean" />
+      </method>
+      <constructor cname="mcd_mission_new" />
+      <method name="SetFlags" cname="mcd_mission_set_flags">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdSystemFlags" name="flags" />
+        </parameters>
+      </method>
+      <method name="SetMode" cname="mcd_mission_set_mode">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMode" name="mode" />
+        </parameters>
+      </method>
+      <method name="SetParent" cname="mcd_mission_set_parent">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="parent" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdOperation" cname="McdOperation" parent="McdMission">
+      <signal name="MissionTaken" cname="mission-taken" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdOperation*" name="operation" />
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </signal>
+      <signal name="MissionRemoved" cname="mission-removed" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdOperation*" name="operation" />
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </signal>
+      <virtual_method name="TakeMission" cname="take_mission">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdOperation*" name="operation" />
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="RemoveMission" cname="remove_mission">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdOperation*" name="operation" />
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </virtual_method>
+      <method name="Foreach" cname="mcd_operation_foreach">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GFunc" name="func" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="GetMissions" cname="mcd_operation_get_missions">
+        <return-type type="const-GList*" />
+      </method>
+      <method name="GetType" cname="mcd_operation_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_operation_new" />
+      <method name="RemoveMission" cname="mcd_operation_remove_mission">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </method>
+      <method name="TakeMission" cname="mcd_operation_take_mission">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdMission*" name="mission" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdPresenceFrame" cname="McdPresenceFrame" parent="McdMission">
+      <signal name="PresenceRequested" cname="presence-requested" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdPresenceFrame*" name="presence_frame" />
+          <parameter type="McPresence" name="presence" />
+          <parameter type="const-gchar*" name="presence_message" />
+        </parameters>
+      </signal>
+      <signal name="PresenceChanged" cname="presence-changed" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdPresenceFrame*" name="presence_frame" />
+          <parameter type="McAccount*" name="account" />
+          <parameter type="McPresence" name="presence" />
+          <parameter type="const-gchar*" name="presence_message" />
+        </parameters>
+      </signal>
+      <signal name="StatusChanged" cname="status-changed" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdPresenceFrame*" name="presence_frame" />
+          <parameter type="McAccount*" name="account" />
+          <parameter type="TpConnectionStatus" name="connection_status" />
+          <parameter type="TpConnectionStatusReasonconnection_reason" name="arg4" />
+        </parameters>
+      </signal>
+      <signal name="PresenceActual" cname="presence-actual" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdPresenceFrame*" name="presence_frame" />
+          <parameter type="McPresence" name="presence" />
+          <parameter type="const-gchar*" name="presence_message" />
+        </parameters>
+      </signal>
+      <signal name="StatusActual" cname="status-actual" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McdPresenceFrame*" name="presence_frame" />
+          <parameter type="TpConnectionStatus" name="status" />
+        </parameters>
+      </signal>
+      <signal name="PresenceStable" cname="presence-stable" when="FIRST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdPresenceFrame*" />
+          <parameter name="p0" type="gboolean" />
+        </parameters>
+      </signal>
+      <method name="AddAccount" cname="mcd_presence_frame_add_account">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="CancelLastRequest" cname="mcd_presence_frame_cancel_last_request">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetAccountPresence" cname="mcd_presence_frame_get_account_presence">
+        <return-type type="McPresence" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="GetAccountPresenceMessage" cname="mcd_presence_frame_get_account_presence_message">
+        <return-type type="const-gchar*" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="GetAccountStatus" cname="mcd_presence_frame_get_account_status">
+        <return-type type="TpConnectionStatus" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="GetAccountStatusReason" cname="mcd_presence_frame_get_account_status_reason">
+        <return-type type="TpConnectionStatusReason" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="GetActualPresence" cname="mcd_presence_frame_get_actual_presence">
+        <return-type type="McPresence" />
+      </method>
+      <method name="GetActualPresenceMessage" cname="mcd_presence_frame_get_actual_presence_message">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetRequestedPresence" cname="mcd_presence_frame_get_requested_presence">
+        <return-type type="McPresence" />
+      </method>
+      <method name="GetRequestedPresenceMessage" cname="mcd_presence_frame_get_requested_presence_message">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetType" cname="mcd_presence_frame_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="IsStable" cname="mcd_presence_frame_is_stable">
+        <return-type type="gboolean" />
+      </method>
+      <constructor cname="mcd_presence_frame_new" />
+      <method name="RemoveAccount" cname="mcd_presence_frame_remove_account">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+        </parameters>
+      </method>
+      <method name="RequestPresence" cname="mcd_presence_frame_request_presence">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McPresence" name="presence" />
+          <parameter type="const-gchar*" name="presence_message" />
+        </parameters>
+      </method>
+      <method name="SetAccountPresence" cname="mcd_presence_frame_set_account_presence">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="McPresence" name="presence" />
+          <parameter type="const-gchar*" name="presence_message" />
+        </parameters>
+      </method>
+      <method name="SetAccountStatus" cname="mcd_presence_frame_set_account_status">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="TpConnectionStatus" name="connection_status" />
+          <parameter type="TpConnectionStatusReason" name="connection_reason" />
+        </parameters>
+      </method>
+      <method name="SetAccounts" cname="mcd_presence_frame_set_accounts">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="const-GList*" name="accounts" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdProvisioningFactory" cname="McdProvisioningFactory" parent="GObject">
+      <method name="Add" cname="mcd_provisioning_factory_add">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="const-gchar*" name="service" />
+          <parameter type="McdProvisioning*" name="provisioning" />
+        </parameters>
+      </method>
+      <method name="Get" cname="mcd_provisioning_factory_get" shared="true">
+        <return-type type="McdProvisioningFactory*" />
+      </method>
+      <method name="GetType" cname="mcd_provisioning_factory_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="Lookup" cname="mcd_provisioning_factory_lookup">
+        <return-type type="McdProvisioning*" />
+        <parameters>
+          <parameter type="const-gchar*" name="service" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McdProxy" cname="McdProxy" parent="McdOperation">
+      <property name="ProxyObject" cname="proxy-object" type="McdMission" readable="true" writeable="true" />
+      <method name="GetProxyObject" cname="mcd_proxy_get_proxy_object">
+        <return-type type="const-McdMission*" />
+      </method>
+      <method name="GetType" cname="mcd_proxy_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_proxy_new">
+        <parameters>
+          <parameter type="McdMission*" name="proxy_mission" />
+        </parameters>
+      </constructor>
+    </object>
+    <object name="McdService" cname="McdService" parent="McdMaster">
+      <field name="MainLoop" cname="main_loop" type="GMainLoop*" />
+      <signal name="AccountStatusChanged" cname="account-status-changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+          <parameter name="p1" type="guint32" />
+          <parameter name="p2" type="guint32" />
+          <parameter name="p3" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal name="AccountPresenceChanged" cname="account-presence-changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+          <parameter name="p1" type="guint32" />
+          <parameter name="p2" type="gchar*" />
+          <parameter name="p3" type="guint32" />
+          <parameter name="p4" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal name="McdError" cname="mcd-error" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+          <parameter name="p1" type="gchar*" />
+          <parameter name="p2" type="guint32" />
+        </parameters>
+      </signal>
+      <signal name="PresenceStatusRequested" cname="presence-status-requested" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+        </parameters>
+      </signal>
+      <signal name="PresenceRequested" cname="presence-requested" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+          <parameter name="p1" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal name="PresenceStatusActual" cname="presence-status-actual" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+        </parameters>
+      </signal>
+      <signal name="PresenceChanged" cname="presence-changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+          <parameter name="p1" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal name="UsedChannelsCountChanged" cname="used-channels-count-changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="gchar*" />
+          <parameter name="p1" type="guint32" />
+        </parameters>
+      </signal>
+      <signal name="StatusActual" cname="status-actual" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McdService*" />
+          <parameter name="p0" type="guint32" />
+          <parameter name="p1" type="guint32" />
+        </parameters>
+      </signal>
+      <method name="GetType" cname="mcd_service_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mcd_service_new" />
+      <method name="Run" cname="mcd_service_run">
+        <return-type type="void" />
+      </method>
+    </object>
+    <object name="McAccountMcAccount" cname="McAccountMcAccount" />
+    <object name="McAccountManager" cname="McAccountManager" parent="TpProxy">
+      <method name="GetType" cname="mc_account_manager_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mc_account_manager_new">
+        <parameters>
+          <parameter type="TpDBusDaemon*" name="dbus" />
+        </parameters>
+      </constructor>
+    </object>
+    <object name="McAccountMonitor" cname="McAccountMonitor" parent="GObject">
+      <field name="Priv" cname="priv" type="gpointer" />
+      <signal when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McAccountMonitor*" />
+          <parameter name="p0" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McAccountMonitor*" />
+          <parameter name="p0" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McAccountMonitor*" />
+          <parameter name="p0" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McAccountMonitor*" />
+          <parameter name="p0" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McAccountMonitor*" />
+          <parameter name="p0" type="gchar*" />
+        </parameters>
+      </signal>
+      <signal when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="McAccountMonitor*" />
+          <parameter name="p0" type="gchar*" />
+          <parameter name="p1" type="gchar*" />
+        </parameters>
+      </signal>
+      <method name="GetSupportedPresences" cname="mc_account_monitor_get_supported_presences">
+        <return-type type="McPresence*" />
+      </method>
+      <method name="GetType" cname="mc_account_monitor_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mc_account_monitor_new" />
+    </object>
+    <object name="4_" cname="McCliNMC4" parent="TpProxy">
+      <method name="GetType" cname="mc_cli_nmc4_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="mc_cli_nmc4_new">
+        <parameters>
+          <parameter type="TpDBusDaemon*" name="dbus" />
+        </parameters>
+      </constructor>
+    </object>
+    <object name="McManager" cname="McManager" parent="GObject">
+      <field name="Priv" cname="priv" type="gpointer" />
+      <method name="ClearCache" cname="mc_manager_clear_cache" shared="true">
+        <return-type type="void" />
+      </method>
+      <method name="Free" cname="mc_manager_free" deprecated="1">
+        <return-type type="void" />
+      </method>
+      <method name="GetBusName" cname="mc_manager_get_bus_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetFilename" cname="mc_manager_get_filename">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetObjectPath" cname="mc_manager_get_object_path">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetType" cname="mc_manager_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="GetUniqueName" cname="mc_manager_get_unique_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="Lookup" cname="mc_manager_lookup" shared="true">
+        <return-type type="McManager*" />
+        <parameters>
+          <parameter type="const-gchar*" name="unique_name" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McProfile" cname="McProfile" parent="GObject">
+      <field name="Priv" cname="priv" type="gpointer" />
+      <method name="ClearCache" cname="mc_profile_clear_cache" shared="true">
+        <return-type type="void" />
+      </method>
+      <method name="Free" cname="mc_profile_free" deprecated="1">
+        <return-type type="void" />
+      </method>
+      <method name="GetAvatarMimeType" cname="mc_profile_get_avatar_mime_type">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetBrandingIconName" cname="mc_profile_get_branding_icon_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetCapabilities" cname="mc_profile_get_capabilities">
+        <return-type type="McProfileCapabilityFlags" />
+      </method>
+      <method name="GetConfigurationUi" cname="mc_profile_get_configuration_ui">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetDefaultAccountDomain" cname="mc_profile_get_default_account_domain">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetDefaultAccountName" cname="mc_profile_get_default_account_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetDefaultSetting" cname="mc_profile_get_default_setting">
+        <return-type type="const-gchar*" />
+        <parameters>
+          <parameter type="const-gchar*" name="setting" />
+        </parameters>
+      </method>
+      <method name="GetDisplayName" cname="mc_profile_get_display_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetIconName" cname="mc_profile_get_icon_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetPriority" cname="mc_profile_get_priority">
+        <return-type type="gint" />
+      </method>
+      <method name="GetProtocol" cname="mc_profile_get_protocol">
+        <return-type type="McProtocol*" />
+      </method>
+      <method name="GetProtocolName" cname="mc_profile_get_protocol_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetSupportedPresences" cname="mc_profile_get_supported_presences">
+        <return-type type="const-McPresence*" />
+      </method>
+      <method name="GetType" cname="mc_profile_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="GetUniqueName" cname="mc_profile_get_unique_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetVcardField" cname="mc_profile_get_vcard_field">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetVcardMangle" cname="mc_profile_get_vcard_mangle">
+        <return-type type="const-gchar*" />
+        <parameters>
+          <parameter type="const-gchar*" name="vcard_field" />
+        </parameters>
+      </method>
+      <method name="IsDefaultForVcardField" cname="mc_profile_is_default_for_vcard_field">
+        <return-type type="gboolean" />
+      </method>
+      <method name="Lookup" cname="mc_profile_lookup" shared="true">
+        <return-type type="McProfile*" />
+        <parameters>
+          <parameter type="const-gchar*" name="unique_name" />
+        </parameters>
+      </method>
+      <method name="LookupDefaultForVcardField" cname="mc_profile_lookup_default_for_vcard_field" shared="true">
+        <return-type type="McProfile*" />
+        <parameters>
+          <parameter type="const-gchar*" name="vcard_field" />
+        </parameters>
+      </method>
+      <method name="SupportsPresence" cname="mc_profile_supports_presence">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McPresence" name="presence" />
+        </parameters>
+      </method>
+    </object>
+    <object name="McProtocol" cname="McProtocol" parent="GObject">
+      <field name="Priv" cname="priv" type="gpointer" />
+      <method name="Free" cname="mc_protocol_free" deprecated="1">
+        <return-type type="void" />
+      </method>
+      <method name="FreeParamsList" cname="mc_protocol_free_params_list" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GSList*" name="list" />
+        </parameters>
+      </method>
+      <method name="GetManager" cname="mc_protocol_get_manager">
+        <return-type type="McManager*" />
+      </method>
+      <method name="GetName" cname="mc_protocol_get_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetParams" cname="mc_protocol_get_params">
+        <return-type type="GSList*" />
+      </method>
+      <method name="GetType" cname="mc_protocol_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="Lookup" cname="mc_protocol_lookup" shared="true">
+        <return-type type="McProtocol*" />
+        <parameters>
+          <parameter type="McManager*" name="id" />
+          <parameter type="const-gchar*" name="protocol" />
+        </parameters>
+      </method>
+      <method name="Print" cname="mc_protocol_print">
+        <return-type type="void" />
+      </method>
+    </object>
+    <object name="MissionControl" cname="MissionControl" parent="DBusGProxy">
+      <field name="FirstRun" cname="first_run" type="gboolean" />
+      <field name="ActiveCallbacks" cname="active_callbacks" type="GHashTable*" />
+      <signal name="Error" cname="Error" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="MissionControl*" />
+          <parameter name="p0" type="guint32" />
+          <parameter name="p1" type="guint32" />
+        </parameters>
+      </signal>
+      <signal name="ServiceEnded" cname="ServiceEnded" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="MissionControl*" />
+        </parameters>
+      </signal>
+      <method name="CancelChannelRequest" cname="mission_control_cancel_channel_request">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="guint" name="operation_id" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="ConnectAllWithDefaultPresence" cname="mission_control_connect_all_with_default_presence">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="ErrorQuark" cname="mission_control_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+      <method name="FreeAccountStatuses" cname="mission_control_free_account_statuses" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McAccountStatus*" name="accounts" />
+        </parameters>
+      </method>
+      <method name="GetAccountForConnection" cname="mission_control_get_account_for_connection">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="TpConn*" name="connection" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetAccountForTpconnection" cname="mission_control_get_account_for_tpconnection">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="TpConnection*" name="connection" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetConnection" cname="mission_control_get_connection">
+        <return-type type="TpConn*" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetConnectionStatus" cname="mission_control_get_connection_status">
+        <return-type type="guint" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetCurrentStatus" cname="mission_control_get_current_status">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McGetCurrentStatusCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="GetOnlineConnections" cname="mission_control_get_online_connections">
+        <return-type type="GSList*" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetPresence" cname="mission_control_get_presence">
+        <return-type type="McPresence" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetPresenceActual" cname="mission_control_get_presence_actual">
+        <return-type type="McPresence" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetPresenceMessage" cname="mission_control_get_presence_message">
+        <return-type type="gchar*" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetPresenceMessageActual" cname="mission_control_get_presence_message_actual">
+        <return-type type="gchar*" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetTpconnection" cname="mission_control_get_tpconnection">
+        <return-type type="TpConnection*" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="GetType" cname="mission_control_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="GetUsedChannelsCount" cname="mission_control_get_used_channels_count">
+        <return-type type="gint" />
+        <parameters>
+          <parameter type="GQuark" name="type" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <constructor cname="mission_control_new">
+        <parameters>
+          <parameter type="DBusGConnection*" name="connection" />
+        </parameters>
+      </constructor>
+      <method name="RegisterFilter" cname="mission_control_register_filter">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="bus_name" />
+          <parameter type="const-gchar*" name="object_path" />
+          <parameter type="const-gchar*" name="channel_type" />
+          <parameter type="McFilterPriority" name="priority" />
+          <parameter type="McFilterFlag" name="flags" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="RemoteAvatarChanged" cname="mission_control_remote_avatar_changed">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="TpConnection*" name="connection" />
+          <parameter type="guint" name="contact_id" />
+          <parameter type="const-gchar*" name="token" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="RequestChannel" cname="mission_control_request_channel">
+        <return-type type="guint" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="const-gchar*" name="type" />
+          <parameter type="guint" name="handle" />
+          <parameter type="TpHandleType" name="handle_type" />
+          <parameter type="McCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="RequestChannelWithStringHandle" cname="mission_control_request_channel_with_string_handle">
+        <return-type type="guint" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="const-gchar*" name="type" />
+          <parameter type="const-gchar*" name="handle" />
+          <parameter type="TpHandleType" name="handle_type" />
+          <parameter type="McCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="RequestChannelWithStringHandleAndVcardField" cname="mission_control_request_channel_with_string_handle_and_vcard_field">
+        <return-type type="guint" />
+        <parameters>
+          <parameter type="McAccount*" name="account" />
+          <parameter type="const-gchar*" name="type" />
+          <parameter type="const-gchar*" name="handle" />
+          <parameter type="const-gchar*" name="vcard_field" />
+          <parameter type="TpHandleType" name="handle_type" />
+          <parameter type="McCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="SetPresence" cname="mission_control_set_presence">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="McPresence" name="presence" />
+          <parameter type="const-gchar*" name="message" />
+          <parameter type="McCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+    </object>
+    <struct name="McAccount" cname="McAccount" opaque="true">
+      <field name="Parent" cname="parent" type="GObject" access="public" writeable="true" />
+      <field name="Priv" cname="priv" type="gpointer" access="public" writeable="true" />
+      <method name="ClearCache" cname="mc_account_clear_cache" shared="true">
+        <return-type type="void" />
+      </method>
+      <method name="Create" cname="mc_account_create" shared="true">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="McProfile*" name="profile" />
+        </parameters>
+      </method>
+      <method name="Delete" cname="mc_account_delete">
+        <return-type type="gboolean" />
+      </method>
+      <method name="Free" cname="mc_account_free" deprecated="1">
+        <return-type type="void" />
+      </method>
+      <method name="GetAlias" cname="mc_account_get_alias">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetAvatar" cname="mc_account_get_avatar">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="gchar**" name="filename" />
+          <parameter type="gchar**" name="mime_type" />
+          <parameter type="gchar**" name="token" />
+        </parameters>
+      </method>
+      <method name="GetAvatarId" cname="mc_account_get_avatar_id">
+        <return-type type="gint" />
+      </method>
+      <method name="GetDisplayName" cname="mc_account_get_display_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetNormalizedName" cname="mc_account_get_normalized_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetParamBoolean" cname="mc_account_get_param_boolean">
+        <return-type type="McAccountSettingState" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gboolean*" name="value" />
+        </parameters>
+      </method>
+      <method name="GetParamInt" cname="mc_account_get_param_int">
+        <return-type type="McAccountSettingState" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gint*" name="value" />
+        </parameters>
+      </method>
+      <method name="GetParamString" cname="mc_account_get_param_string">
+        <return-type type="McAccountSettingState" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gchar**" name="value" />
+        </parameters>
+      </method>
+      <method name="GetParams" cname="mc_account_get_params">
+        <return-type type="GHashTable*" />
+      </method>
+      <method name="GetProfile" cname="mc_account_get_profile">
+        <return-type type="McProfile*" />
+      </method>
+      <method name="GetSecondaryVcardFields" cname="mc_account_get_secondary_vcard_fields">
+        <return-type type="GList*" />
+      </method>
+      <method name="GetSupportedPresences" cname="mc_account_get_supported_presences">
+        <return-type type="const-McPresence*" />
+      </method>
+      <method name="GetType" cname="mc_account_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="GetUniqueName" cname="mc_account_get_unique_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="IsComplete" cname="mc_account_is_complete">
+        <return-type type="gboolean" />
+      </method>
+      <method name="IsEnabled" cname="mc_account_is_enabled">
+        <return-type type="gboolean" />
+      </method>
+      <method name="Lookup" cname="mc_account_lookup" shared="true">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="const-gchar*" name="unique_name" />
+        </parameters>
+      </method>
+      <method name="LookupWithProfile" cname="mc_account_lookup_with_profile" shared="true">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="McProfile*" name="profile" />
+          <parameter type="const-gchar*" name="account" />
+        </parameters>
+      </method>
+      <method name="LookupWithVcardField" cname="mc_account_lookup_with_vcard_field" shared="true">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="const-gchar*" name="vcard_field" />
+          <parameter type="const-gchar*" name="account" />
+        </parameters>
+      </method>
+      <constructor cname="mc_account_new">
+        <parameters>
+          <parameter type="TpDBusDaemon*" name="dbus" />
+        </parameters>
+      </constructor>
+      <method name="ResetAvatarId" cname="mc_account_reset_avatar_id">
+        <return-type type="gboolean" />
+      </method>
+      <method name="SetAlias" cname="mc_account_set_alias">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="alias" />
+        </parameters>
+      </method>
+      <method name="SetAvatar" cname="mc_account_set_avatar">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="filename" />
+          <parameter type="const-gchar*" name="mime_type" />
+        </parameters>
+      </method>
+      <method name="SetAvatarFromData" cname="mc_account_set_avatar_from_data">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="data" />
+          <parameter type="gsize" name="len" />
+          <parameter type="const-gchar*" name="mime_type" />
+        </parameters>
+      </method>
+      <method name="SetAvatarMimeType" cname="mc_account_set_avatar_mime_type">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="mime_type" />
+        </parameters>
+      </method>
+      <method name="SetAvatarToken" cname="mc_account_set_avatar_token">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="token" />
+        </parameters>
+      </method>
+      <method name="SetDisplayName" cname="mc_account_set_display_name">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </method>
+      <method name="SetEnabled" cname="mc_account_set_enabled">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gboolean" name="enabled" />
+        </parameters>
+      </method>
+      <method name="SetNormalizedName" cname="mc_account_set_normalized_name">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </method>
+      <method name="SetParamBoolean" cname="mc_account_set_param_boolean">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gboolean" name="value" />
+        </parameters>
+      </method>
+      <method name="SetParamInt" cname="mc_account_set_param_int">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gint" name="value" />
+        </parameters>
+      </method>
+      <method name="SetParamString" cname="mc_account_set_param_string">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="const-gchar*" name="value" />
+        </parameters>
+      </method>
+      <method name="SetSecondaryVcardFields" cname="mc_account_set_secondary_vcard_fields">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GList*" name="fields" />
+        </parameters>
+      </method>
+      <method name="SupportsPresence" cname="mc_account_supports_presence">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McPresence" name="presence" />
+        </parameters>
+      </method>
+      <method name="UnsetParam" cname="mc_account_unset_param">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </method>
+    </struct>
+    <struct name="McAccountClass" cname="McAccountClass">
+      <field name="ParentClass" cname="parent_class" type="GObjectClass" />
+    </struct>
+    <struct name="McAccountStatus" cname="McAccountStatus" opaque="true" />
+    <struct name="McProfileClass" cname="McProfileClass">
+      <field name="ParentClass" cname="parent_class" type="GObjectClass" />
+    </struct>
+    <struct name="McProtocolParam" cname="McProtocolParam">
+      <field name="Name" cname="name" type="const-gchar*" />
+      <field name="Signature" cname="signature" type="const-gchar*" />
+      <field name="Def" cname="def" type="const-gchar*" />
+      <field name="Flags" cname="flags" type="guint" />
+    </struct>
+    <struct name="McdChannelHandler" cname="McdChannelHandler">
+      <field name="BusName" cname="bus_name" type="const-gchar*" />
+      <field name="ObjPath" cname="obj_path" type="const-gchar*" />
+      <field name="Capabilities" cname="capabilities" type="TpChannelMediaCapabilities" />
+      <field name="Version" cname="version" type="gint" />
+    </struct>
+    <struct name="McdDispatcherContext" cname="McdDispatcherContext" opaque="true">
+      <method name="GetChanHandler" cname="mcd_dispatcher_context_get_chan_handler">
+        <return-type type="McdChannelHandler*" />
+      </method>
+      <method name="GetChannel" cname="mcd_dispatcher_context_get_channel">
+        <return-type type="McdChannel*" />
+      </method>
+      <method name="GetChannelObject" cname="mcd_dispatcher_context_get_channel_object">
+        <return-type type="TpChannel*" />
+      </method>
+      <method name="GetConnection" cname="mcd_dispatcher_context_get_connection">
+        <return-type type="McdConnection*" />
+      </method>
+      <method name="GetConnectionObject" cname="mcd_dispatcher_context_get_connection_object">
+        <return-type type="TpConnection*" />
+      </method>
+      <method name="GetDispatcher" cname="mcd_dispatcher_context_get_dispatcher">
+        <return-type type="McdDispatcher*" />
+      </method>
+      <method name="GetMembers" cname="mcd_dispatcher_context_get_members">
+        <return-type type="GPtrArray*" />
+      </method>
+      <method name="GetProtocolName" cname="mcd_dispatcher_context_get_protocol_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="Process" cname="mcd_dispatcher_context_process">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="result" />
+        </parameters>
+      </method>
+    </struct>
+    <struct name="McdDispatcherStatus" cname="McdDispatcherStatus" opaque="true" />
+    <struct name="McdFilter" cname="McdFilter" opaque="true" />
+    <struct name="McdProvisioningFactoryPriv" cname="McdProvisioningFactoryPriv" opaque="true" />
+    <class name="Accounts" cname="McAccounts_">
+      <method name="Filter" cname="mc_accounts_filter" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="GList*" name="accounts" />
+          <parameter type="McAccountFilter" name="filter" />
+          <parameter type="gpointer" name="data" />
+        </parameters>
+      </method>
+      <method name="List" cname="mc_accounts_list" shared="true">
+        <return-type type="GList*" />
+      </method>
+      <method name="ListByEnabled" cname="mc_accounts_list_by_enabled" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="gboolean" name="enabled" />
+        </parameters>
+      </method>
+      <method name="ListByProfile" cname="mc_accounts_list_by_profile" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="McProfile*" name="profile" />
+        </parameters>
+      </method>
+      <method name="ListBySecondaryVcardField" cname="mc_accounts_list_by_secondary_vcard_field" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="const-gchar*" name="vcard_field" />
+        </parameters>
+      </method>
+      <method name="ListByVcardField" cname="mc_accounts_list_by_vcard_field" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="const-gchar*" name="vcard_field" />
+        </parameters>
+      </method>
+      <method name="ListFree" cname="mc_accounts_list_free" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GList*" name="list" />
+        </parameters>
+      </method>
+    </class>
+    <class name="Global" cname="MCGlobal">
+      <method name="MakeResident" cname="mc_make_resident" shared="true">
+        <return-type type="void" />
+      </method>
+    </class>
+    <class name="Managers" cname="McManagers_">
+      <method name="FreeList" cname="mc_managers_free_list" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GList*" name="list" />
+        </parameters>
+      </method>
+      <method name="List" cname="mc_managers_list" shared="true">
+        <return-type type="GList*" />
+      </method>
+    </class>
+    <class name="Profiles" cname="McProfiles_">
+      <method name="FreeList" cname="mc_profiles_free_list" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GList*" name="list" />
+        </parameters>
+      </method>
+      <method name="List" cname="mc_profiles_list" shared="true">
+        <return-type type="GList*" />
+      </method>
+      <method name="ListByProtocol" cname="mc_profiles_list_by_protocol" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="const-gchar*" name="protocol" />
+        </parameters>
+      </method>
+      <method name="ListByVcardField" cname="mc_profiles_list_by_vcard_field" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="const-gchar*" name="vcard_field" />
+        </parameters>
+      </method>
+    </class>
+    <class name="Protocols" cname="McProtocols_">
+      <method name="FreeList" cname="mc_protocols_free_list" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GList*" name="list" />
+        </parameters>
+      </method>
+      <method name="List" cname="mc_protocols_list" shared="true">
+        <return-type type="GList*" />
+      </method>
+      <method name="ListByManager" cname="mc_protocols_list_by_manager" shared="true">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="McManager*" name="id" />
+        </parameters>
+      </method>
+    </class>
+  </namespace>
+</api>
