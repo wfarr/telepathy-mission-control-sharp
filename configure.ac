@@ -1,4 +1,4 @@
-AC_INIT(telepathy-glib-sharp, 0.7.10)
+AC_INIT(telepathy-mission-control-sharp, 0.7.10)
 AC_CONFIG_SRCDIR([Makefile.am])
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AM_MAINTAINER_MODE
@@ -64,7 +64,7 @@ PKG_CHECK_MODULES(BASE_DEPENDENCIES,
 PKG_CHECK_MODULES(TELEPATHY_GLIB_SHARP,
                   gtk-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION
                   glib-sharp-2.0 >= $GLIBSHARP_REQUIRED_VERSION
-                  telepathy >= $TELEPATHY_REQUIRED_VERSION
+                  libtelepathy >= $TELEPATHY_REQUIRED_VERSION
                   telepathy-glib >= $TELEPATHY_GLIB_REQUIRED_VERSION)
 
 AC_CONFIG_FILES([
