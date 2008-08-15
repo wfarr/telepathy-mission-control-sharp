@@ -18,7 +18,7 @@ TELEPATHY_MISSION_CONTROL_4_67_DOWNLOAD = \
 all: $(ASSEMBLY)
 
 api: get-source-code
-	$(GAPIPAR) telepathy-mission-control-4.67-sources.xml
+	$(GAPIPAR) telepathy-mission-control-sharp-4.67-sources.xml
 
 $(API): $(RAW_API) $(METADATA)
 	cp $(RAW_API) $(API)
