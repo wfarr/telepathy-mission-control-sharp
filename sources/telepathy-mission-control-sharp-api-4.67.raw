@@ -1156,42 +1156,42 @@
     </object>
     <object name="McAccountMonitor" cname="McAccountMonitor" parent="GObject">
       <field name="Priv" cname="priv" type="gpointer" />
-      <signal when="LAST">
+      <signal name="SignalCreated" cname="signal-created" when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal when="LAST">
+      <signal name="SignalDeleted" cname="signal-deleted" when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal when="LAST">
+      <signal name="SignalEnabled" cname="signal-enabled" when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal when="LAST">
+      <signal name="SignalDisabled" cname="signal-disabled" when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal when="LAST">
+      <signal name="SignalChanged" cname="signal-changed" when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal when="LAST">
+      <signal name="ParamChanged" cname="param-changed" when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
