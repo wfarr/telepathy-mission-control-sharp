@@ -1,2 +1,7 @@
-SUBDIRS = sources samples doc
+SUBDIRS = sources
 
+EXTRA_DIST =
+	README		\
+	ChangeLog	\
+	NEWS		\
+	HACKING
