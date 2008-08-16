@@ -2,5 +2,6 @@
 <metadata>
   <attr path="//parameter[@name='ret']" name="name">retval</attr>
   <attr path="//method[@name='GetMembersAccepted']" name="name">GetAcceptedMembersNow</attr>
+  <attr path="//object[@name='McdMission']/signal[@name='Abort']" name="name">OnAbort</attr>
   <remove-node path="//object[@name='4_']" />
 </metadata>
