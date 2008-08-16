@@ -2,4 +2,5 @@
 <metadata>
   <attr path="//parameter[@name='ret']" name="name">retval</attr>
   <attr path="//method[@name='GetMembersAccepted']" name="name">GetAcceptedMembersNow</attr>
+  <remove-node path="//object[@name='4_']" />
 </metadata>
