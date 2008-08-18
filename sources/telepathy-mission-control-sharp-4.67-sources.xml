@@ -5,8 +5,8 @@
       <namespace name="MC">
         <dir>telepathy-mission-control-4.67/src</dir>
         <dir>telepathy-mission-control-4.67/libmissioncontrol</dir>
-        <dir>telepathy-mission-control-4.67/server</dir>
-        <dir>telepathy-mission-control-4.67/libmcclient</dir>
+<!--         <dir>telepathy-mission-control-4.67/server</dir> -->
+<!--         <dir>telepathy-mission-control-4.67/libmcclient</dir> -->
       </namespace>
     </library>
   </api>
