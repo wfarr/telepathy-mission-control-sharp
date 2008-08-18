@@ -6,7 +6,7 @@
         Please DO NOT MODIFY THIS FILE, modify .metadata files instead.
 
 -->
-  <namespace name="MC" library="telepathy-mission-control-1.0.0.dll">
+  <namespace name="MC" library="telepathy-mission-control-sharp-1.0.0.dll">
     <enum name="Error" cname="MCError" type="enum">
       <member cname="MC_DISCONNECTED_ERROR" name="DisconnectedError" />
       <member cname="MC_INVALID_HANDLE_ERROR" name="InvalidHandleError" />
@@ -1143,55 +1143,240 @@
         <return-type type="void" />
       </method>
     </object>
-    <object name="McAccountMcAccount" cname="McAccountMcAccount" />
-    <object name="McAccountManager" cname="McAccountManager" parent="TpProxy">
-      <method name="GetType" cname="mc_account_manager_get_type" shared="true">
+    <object name="McAccount" cname="McAccount" parent="GObject">
+      <field name="Priv" cname="priv" type="gpointer" />
+      <method name="ClearCache" cname="mc_account_clear_cache" shared="true">
+        <return-type type="void" />
+      </method>
+      <method name="Create" cname="mc_account_create" shared="true">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="McProfile*" name="profile" />
+        </parameters>
+      </method>
+      <method name="Delete" cname="mc_account_delete">
+        <return-type type="gboolean" />
+      </method>
+      <method name="Free" cname="mc_account_free" deprecated="1">
+        <return-type type="void" />
+      </method>
+      <method name="GetAlias" cname="mc_account_get_alias">
+        <return-type type="gchar*" />
+      </method>
+      <method name="GetAvatar" cname="mc_account_get_avatar">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="gchar**" name="filename" />
+          <parameter type="gchar**" name="mime_type" />
+          <parameter type="gchar**" name="token" />
+        </parameters>
+      </method>
+      <method name="GetAvatarId" cname="mc_account_get_avatar_id">
+        <return-type type="gint" />
+      </method>
+      <method name="GetDisplayName" cname="mc_account_get_display_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetNormalizedName" cname="mc_account_get_normalized_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="GetParamBoolean" cname="mc_account_get_param_boolean">
+        <return-type type="McAccountSettingState" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gboolean*" name="value" />
+        </parameters>
+      </method>
+      <method name="GetParamInt" cname="mc_account_get_param_int">
+        <return-type type="McAccountSettingState" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gint*" name="value" />
+        </parameters>
+      </method>
+      <method name="GetParamString" cname="mc_account_get_param_string">
+        <return-type type="McAccountSettingState" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gchar**" name="value" />
+        </parameters>
+      </method>
+      <method name="GetParams" cname="mc_account_get_params">
+        <return-type type="GHashTable*" />
+      </method>
+      <method name="GetProfile" cname="mc_account_get_profile">
+        <return-type type="McProfile*" />
+      </method>
+      <method name="GetSecondaryVcardFields" cname="mc_account_get_secondary_vcard_fields">
+        <return-type type="GList*" />
+      </method>
+      <method name="GetSupportedPresences" cname="mc_account_get_supported_presences">
+        <return-type type="const-McPresence*" />
+      </method>
+      <method name="GetType" cname="mc_account_get_type" shared="true">
         <return-type type="GType" />
       </method>
-      <constructor cname="mc_account_manager_new">
+      <method name="GetUniqueName" cname="mc_account_get_unique_name">
+        <return-type type="const-gchar*" />
+      </method>
+      <method name="IsComplete" cname="mc_account_is_complete">
+        <return-type type="gboolean" />
+      </method>
+      <method name="IsEnabled" cname="mc_account_is_enabled">
+        <return-type type="gboolean" />
+      </method>
+      <method name="Lookup" cname="mc_account_lookup" shared="true">
+        <return-type type="McAccount*" />
         <parameters>
-          <parameter type="TpDBusDaemon*" name="dbus" />
+          <parameter type="const-gchar*" name="unique_name" />
         </parameters>
-      </constructor>
+      </method>
+      <method name="LookupWithProfile" cname="mc_account_lookup_with_profile" shared="true">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="McProfile*" name="profile" />
+          <parameter type="const-gchar*" name="account" />
+        </parameters>
+      </method>
+      <method name="LookupWithVcardField" cname="mc_account_lookup_with_vcard_field" shared="true">
+        <return-type type="McAccount*" />
+        <parameters>
+          <parameter type="const-gchar*" name="vcard_field" />
+          <parameter type="const-gchar*" name="account" />
+        </parameters>
+      </method>
+      <method name="ResetAvatarId" cname="mc_account_reset_avatar_id">
+        <return-type type="gboolean" />
+      </method>
+      <method name="SetAlias" cname="mc_account_set_alias">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="alias" />
+        </parameters>
+      </method>
+      <method name="SetAvatar" cname="mc_account_set_avatar">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="filename" />
+          <parameter type="const-gchar*" name="mime_type" />
+        </parameters>
+      </method>
+      <method name="SetAvatarFromData" cname="mc_account_set_avatar_from_data">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="data" />
+          <parameter type="gsize" name="len" />
+          <parameter type="const-gchar*" name="mime_type" />
+        </parameters>
+      </method>
+      <method name="SetAvatarMimeType" cname="mc_account_set_avatar_mime_type">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="mime_type" />
+        </parameters>
+      </method>
+      <method name="SetAvatarToken" cname="mc_account_set_avatar_token">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="token" />
+        </parameters>
+      </method>
+      <method name="SetDisplayName" cname="mc_account_set_display_name">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </method>
+      <method name="SetEnabled" cname="mc_account_set_enabled">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gboolean" name="enabled" />
+        </parameters>
+      </method>
+      <method name="SetNormalizedName" cname="mc_account_set_normalized_name">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </method>
+      <method name="SetParamBoolean" cname="mc_account_set_param_boolean">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gboolean" name="value" />
+        </parameters>
+      </method>
+      <method name="SetParamInt" cname="mc_account_set_param_int">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gint" name="value" />
+        </parameters>
+      </method>
+      <method name="SetParamString" cname="mc_account_set_param_string">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="const-gchar*" name="value" />
+        </parameters>
+      </method>
+      <method name="SetSecondaryVcardFields" cname="mc_account_set_secondary_vcard_fields">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GList*" name="fields" />
+        </parameters>
+      </method>
+      <method name="SupportsPresence" cname="mc_account_supports_presence">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="McPresence" name="presence" />
+        </parameters>
+      </method>
+      <method name="UnsetParam" cname="mc_account_unset_param">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </method>
     </object>
     <object name="McAccountMonitor" cname="McAccountMonitor" parent="GObject">
       <field name="Priv" cname="priv" type="gpointer" />
-      <signal name="SignalCreated" cname="signal-created" when="LAST">
+      <signal when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal name="SignalDeleted" cname="signal-deleted" when="LAST">
+      <signal when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal name="SignalEnabled" cname="signal-enabled" when="LAST">
+      <signal when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal name="SignalDisabled" cname="signal-disabled" when="LAST">
+      <signal when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal name="SignalChanged" cname="signal-changed" when="LAST">
+      <signal when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
           <parameter name="p0" type="gchar*" />
         </parameters>
       </signal>
-      <signal name="ParamChanged" cname="param-changed" when="LAST">
+      <signal when="LAST">
         <return-type type="void" />
         <parameters>
           <parameter name="inst" type="McAccountMonitor*" />
@@ -1559,208 +1744,6 @@
         </parameters>
       </method>
     </object>
-    <struct name="McAccount" cname="McAccount" opaque="true">
-      <field name="Parent" cname="parent" type="GObject" access="public" writeable="true" />
-      <field name="Priv" cname="priv" type="gpointer" access="public" writeable="true" />
-      <method name="ClearCache" cname="mc_account_clear_cache" shared="true">
-        <return-type type="void" />
-      </method>
-      <method name="Create" cname="mc_account_create" shared="true">
-        <return-type type="McAccount*" />
-        <parameters>
-          <parameter type="McProfile*" name="profile" />
-        </parameters>
-      </method>
-      <method name="Delete" cname="mc_account_delete">
-        <return-type type="gboolean" />
-      </method>
-      <method name="Free" cname="mc_account_free" deprecated="1">
-        <return-type type="void" />
-      </method>
-      <method name="GetAlias" cname="mc_account_get_alias">
-        <return-type type="gchar*" />
-      </method>
-      <method name="GetAvatar" cname="mc_account_get_avatar">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="gchar**" name="filename" />
-          <parameter type="gchar**" name="mime_type" />
-          <parameter type="gchar**" name="token" />
-        </parameters>
-      </method>
-      <method name="GetAvatarId" cname="mc_account_get_avatar_id">
-        <return-type type="gint" />
-      </method>
-      <method name="GetDisplayName" cname="mc_account_get_display_name">
-        <return-type type="const-gchar*" />
-      </method>
-      <method name="GetNormalizedName" cname="mc_account_get_normalized_name">
-        <return-type type="const-gchar*" />
-      </method>
-      <method name="GetParamBoolean" cname="mc_account_get_param_boolean">
-        <return-type type="McAccountSettingState" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-          <parameter type="gboolean*" name="value" />
-        </parameters>
-      </method>
-      <method name="GetParamInt" cname="mc_account_get_param_int">
-        <return-type type="McAccountSettingState" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-          <parameter type="gint*" name="value" />
-        </parameters>
-      </method>
-      <method name="GetParamString" cname="mc_account_get_param_string">
-        <return-type type="McAccountSettingState" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-          <parameter type="gchar**" name="value" />
-        </parameters>
-      </method>
-      <method name="GetParams" cname="mc_account_get_params">
-        <return-type type="GHashTable*" />
-      </method>
-      <method name="GetProfile" cname="mc_account_get_profile">
-        <return-type type="McProfile*" />
-      </method>
-      <method name="GetSecondaryVcardFields" cname="mc_account_get_secondary_vcard_fields">
-        <return-type type="GList*" />
-      </method>
-      <method name="GetSupportedPresences" cname="mc_account_get_supported_presences">
-        <return-type type="const-McPresence*" />
-      </method>
-      <method name="GetType" cname="mc_account_get_type" shared="true">
-        <return-type type="GType" />
-      </method>
-      <method name="GetUniqueName" cname="mc_account_get_unique_name">
-        <return-type type="const-gchar*" />
-      </method>
-      <method name="IsComplete" cname="mc_account_is_complete">
-        <return-type type="gboolean" />
-      </method>
-      <method name="IsEnabled" cname="mc_account_is_enabled">
-        <return-type type="gboolean" />
-      </method>
-      <method name="Lookup" cname="mc_account_lookup" shared="true">
-        <return-type type="McAccount*" />
-        <parameters>
-          <parameter type="const-gchar*" name="unique_name" />
-        </parameters>
-      </method>
-      <method name="LookupWithProfile" cname="mc_account_lookup_with_profile" shared="true">
-        <return-type type="McAccount*" />
-        <parameters>
-          <parameter type="McProfile*" name="profile" />
-          <parameter type="const-gchar*" name="account" />
-        </parameters>
-      </method>
-      <method name="LookupWithVcardField" cname="mc_account_lookup_with_vcard_field" shared="true">
-        <return-type type="McAccount*" />
-        <parameters>
-          <parameter type="const-gchar*" name="vcard_field" />
-          <parameter type="const-gchar*" name="account" />
-        </parameters>
-      </method>
-      <constructor cname="mc_account_new">
-        <parameters>
-          <parameter type="TpDBusDaemon*" name="dbus" />
-        </parameters>
-      </constructor>
-      <method name="ResetAvatarId" cname="mc_account_reset_avatar_id">
-        <return-type type="gboolean" />
-      </method>
-      <method name="SetAlias" cname="mc_account_set_alias">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="alias" />
-        </parameters>
-      </method>
-      <method name="SetAvatar" cname="mc_account_set_avatar">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="filename" />
-          <parameter type="const-gchar*" name="mime_type" />
-        </parameters>
-      </method>
-      <method name="SetAvatarFromData" cname="mc_account_set_avatar_from_data">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="data" />
-          <parameter type="gsize" name="len" />
-          <parameter type="const-gchar*" name="mime_type" />
-        </parameters>
-      </method>
-      <method name="SetAvatarMimeType" cname="mc_account_set_avatar_mime_type">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="mime_type" />
-        </parameters>
-      </method>
-      <method name="SetAvatarToken" cname="mc_account_set_avatar_token">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="token" />
-        </parameters>
-      </method>
-      <method name="SetDisplayName" cname="mc_account_set_display_name">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-        </parameters>
-      </method>
-      <method name="SetEnabled" cname="mc_account_set_enabled">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gboolean" name="enabled" />
-        </parameters>
-      </method>
-      <method name="SetNormalizedName" cname="mc_account_set_normalized_name">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-        </parameters>
-      </method>
-      <method name="SetParamBoolean" cname="mc_account_set_param_boolean">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-          <parameter type="gboolean" name="value" />
-        </parameters>
-      </method>
-      <method name="SetParamInt" cname="mc_account_set_param_int">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-          <parameter type="gint" name="value" />
-        </parameters>
-      </method>
-      <method name="SetParamString" cname="mc_account_set_param_string">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-          <parameter type="const-gchar*" name="value" />
-        </parameters>
-      </method>
-      <method name="SetSecondaryVcardFields" cname="mc_account_set_secondary_vcard_fields">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-GList*" name="fields" />
-        </parameters>
-      </method>
-      <method name="SupportsPresence" cname="mc_account_supports_presence">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="McPresence" name="presence" />
-        </parameters>
-      </method>
-      <method name="UnsetParam" cname="mc_account_unset_param">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-        </parameters>
-      </method>
-    </struct>
     <struct name="McAccountClass" cname="McAccountClass">
       <field name="ParentClass" cname="parent_class" type="GObjectClass" />
     </struct>
