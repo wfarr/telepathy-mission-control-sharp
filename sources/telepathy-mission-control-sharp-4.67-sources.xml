@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <gapi-parser-input>
-  <api filename="telepathy-mission-control-api-4.67.raw">
+  <api filename="telepathy-mission-control-sharp-api-4.67.raw">
     <library name="telepathy-mission-control-1.0.0.dll">
       <namespace name="MC">
         <dir>telepathy-mission-control-4.67/src</dir>
